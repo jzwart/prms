@@ -13,11 +13,6 @@ MMFLIB      = .$(MMFDIR)/libmmf.a
 ARC		= LINUX
 #ARC		= WINDOWS
 
-#OPTLEVEL	= -g
-#OPTLEVEL	= -O -Bstatic
-OPTLEVEL	= -O --static
-LDFLAGS		=$(OPTLEVEL)
-=======
 OPTLEVEL	= -O -Bstatic
 #for gfortran
 LDFLAGS	=$(OPTLEVEL)

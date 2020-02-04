@@ -3,3 +3,5 @@
 *.mod
 *.a
 /prms/prms
+.Rproj.user
+*.Rproj

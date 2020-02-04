@@ -1,43 +1,60 @@
 
 #-------------------------------------------------------------------
-# $Id: makelist 8328 2016-06-13 20:36:12Z rsregan $
 #-------------------------------------------------------------------
 
-#MMFDIR      = ./mmf
-#LIBDIR      = ../../lib
-#PRMSDIR    = ./prms
-#BINDIR      = ../../bin
-#MMFLIB      = $(LIBDIR)/libmmf.a
+MMFDIR      = ./mmf
+PRMSDIR     = ./prms
+BINDIR      = ../bin
+MMFLIB      = .$(MMFDIR)/libmmf.a
 
 #########################################################
 # Configure tags for each system
 ##########################################################
 ARC		= LINUX
+#ARC		= WINDOWS
 
 #OPTLEVEL	= -g
 #OPTLEVEL	= -O -Bstatic
 OPTLEVEL	= -O --static
 LDFLAGS		=$(OPTLEVEL)
+=======
+OPTLEVEL	= -O -Bstatic
+#for gfortran
+LDFLAGS	=$(OPTLEVEL)
+#for ifort
+#LDFLAGS		=$(OPTLEVEL) -nofor_main
 
 ##########################################################
 # Define the Fortran compile flags
 ##########################################################
-FFLAGS= $(OPTLEVEL) -fbounds-check -Wall -fno-second-underscore
-#FFLAGS= $(OPTLEVEL) -Wall -fno-second-underscore
+#for gfortran
+#FFLAGS= $(OPTLEVEL) -fbounds-check -fno-second-underscore -Wall
+FFLAGS= $(OPTLEVEL) -fno-second-underscore
+#for ifort
+#FFLAGS= $(OPTLEVEL) -warn all -fltconsistency
+#FFLAGS= $(OPTLEVEL) -fp-model source
 FC		= gfortran
+#FC		= ifort
 
 ##########################################################
 # Define the C compile flags
 # -D_UF defines UNIX naming conventions for mixed language compilation.
 ##########################################################
-CFLAGS		= $(OPTLEVEL) -D$(ARC) -D_UF
+CFLAGS		= $(OPTLEVEL) -D$(ARC) -D_UF -Wall
+#for gfortran
 CC		= gcc
+#for ifort
+#CC		= icc
 
 ##########################################################
 # Define the libraries
 ##########################################################
+#for gfortran
 MATHLIB		= -lm
 GCLIB		= -lgfortran -lgcc $(MATHLIB)
+#for ifort
+#MATHLIB		=
+#GCLIB		=
 FLIBS    = $(GCLIB)
 
 ##########################################################
@@ -47,7 +64,8 @@ RM		= rm -f
 AR  		= ar ruv
 RANLIB		= ranlib
 MAKE		= make
-LN		= ln -s
+#LN		= ln -s
+LN		= cp
 CD		= cd
 CP		= cp
 

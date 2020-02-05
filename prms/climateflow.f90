@@ -833,7 +833,7 @@
       USE PRMS_MODULE, ONLY: Temp_flag, Precip_flag, Nhru, Nssr, Temp_module, Precip_module, Parameter_check_flag, &
      &    Solrad_module, Soilzone_module, Srunoff_module, Stream_order_flag, Ntemp, Nrain, Nsol, Nevap, &
      &    Init_vars_from_file, Inputerror_flag, Dprst_flag, Solrad_flag, Et_flag, Nlake, Et_module, Humidity_cbh_flag, &
-     &    PRMS4_flag, Print_debug, GSFLOW_flag 
+     &    PRMS4_flag, Print_debug, GSFLOW_flag
       USE PRMS_BASIN, ONLY: Elev_units, FEET2METERS, METERS2FEET, Active_hrus, Hru_route_order, Hru_type
       IMPLICIT NONE
 ! Functions
@@ -1356,55 +1356,55 @@
       CHARACTER(LEN=11) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Basin_ppt, Basin_rain, Basin_snow, Basin_obs_ppt, Basin_temp, Basin_orad, &
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Basin_ppt, Basin_rain, Basin_snow, Basin_obs_ppt, Basin_temp, Basin_orad, &
      &          Basin_tmax, Basin_tmin, Solrad_tmax, Solrad_tmin, Basin_transp_on, Basin_potet, Basin_horad, &
      &          Basin_swrad, Orad, Flow_out, Basin_potsw, Basin_humidity
-        WRITE ( Restart_outunit ) Basin_cfs, Basin_cms, Basin_ssflow_cfs, Basin_sroff_cfs, Basin_stflow_in, &
+        WRITE ( Restart_outunit, * ) Basin_cfs, Basin_cms, Basin_ssflow_cfs, Basin_sroff_cfs, Basin_stflow_in, &
      &          Basin_gwflow_cfs, Basin_stflow_out, Basin_ssflow, Basin_soil_to_gw, Basin_actet, &
      &          Basin_swale_et, Basin_perv_et, Basin_soil_moist, Basin_ssstor, Basin_lakeevap, Basin_lake_stor
-        WRITE ( Restart_outunit ) Transp_on
-        WRITE ( Restart_outunit ) Pkwater_equiv
-        WRITE ( Restart_outunit ) Soil_moist
-        WRITE ( Restart_outunit ) Slow_stor
-        WRITE ( Restart_outunit ) Ssres_stor
-        WRITE ( Restart_outunit ) Soil_rechr
-        WRITE ( Restart_outunit ) Imperv_stor
-        IF ( GSFLOW_flag==0 ) WRITE ( Restart_outunit ) Gwres_stor
+        WRITE ( Restart_outunit, * ) Transp_on
+        WRITE ( Restart_outunit, * ) Pkwater_equiv
+        WRITE ( Restart_outunit, * ) Soil_moist
+        WRITE ( Restart_outunit, * ) Slow_stor
+        WRITE ( Restart_outunit, * ) Ssres_stor
+        WRITE ( Restart_outunit, * ) Soil_rechr
+        WRITE ( Restart_outunit, * ) Imperv_stor
+        IF ( GSFLOW_flag==0 ) WRITE ( Restart_outunit, * ) Gwres_stor
         IF ( Dprst_flag==1 ) THEN
-          WRITE ( Restart_outunit ) Dprst_vol_open
-          WRITE ( Restart_outunit ) Dprst_vol_clos
+          WRITE ( Restart_outunit, * ) Dprst_vol_open
+          WRITE ( Restart_outunit, * ) Dprst_vol_clos
         ENDIF
         IF ( Stream_order_flag==1 ) THEN
-          WRITE ( Restart_outunit ) Seg_inflow
-          WRITE ( Restart_outunit ) Seg_outflow
+          WRITE ( Restart_outunit, * ) Seg_inflow
+          WRITE ( Restart_outunit, * ) Seg_outflow
         ENDIF
-        IF ( Nlake>0 ) WRITE ( Restart_outunit ) Lake_vol
+        IF ( Nlake>0 ) WRITE ( Restart_outunit, * ) Lake_vol
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Basin_ppt, Basin_rain, Basin_snow, Basin_obs_ppt, Basin_temp, Basin_orad, &
+        READ ( Restart_inunit, * ) Basin_ppt, Basin_rain, Basin_snow, Basin_obs_ppt, Basin_temp, Basin_orad, &
      &         Basin_tmax, Basin_tmin, Solrad_tmax, Solrad_tmin, Basin_transp_on, Basin_potet, Basin_horad, &
      &         Basin_swrad, Orad, Flow_out, Basin_potsw, Basin_humidity
-        READ ( Restart_inunit ) Basin_cfs, Basin_cms, Basin_ssflow_cfs, Basin_sroff_cfs, Basin_stflow_in, &
+        READ ( Restart_inunit, * ) Basin_cfs, Basin_cms, Basin_ssflow_cfs, Basin_sroff_cfs, Basin_stflow_in, &
      &         Basin_gwflow_cfs, Basin_stflow_out, Basin_ssflow, Basin_soil_to_gw, Basin_actet, &
      &         Basin_swale_et, Basin_perv_et, Basin_soil_moist, Basin_ssstor, Basin_lakeevap, Basin_lake_stor
-        READ ( Restart_inunit ) Transp_on
-        READ ( Restart_inunit ) Pkwater_equiv
-        READ ( Restart_inunit ) Soil_moist
-        READ ( Restart_inunit ) Slow_stor
-        READ ( Restart_inunit ) Ssres_stor
-        READ ( Restart_inunit ) Soil_rechr
-        READ ( Restart_inunit ) Imperv_stor
-        IF ( GSFLOW_flag==0 ) READ ( Restart_inunit ) Gwres_stor
+        READ ( Restart_inunit, * ) Transp_on
+        READ ( Restart_inunit, * ) Pkwater_equiv
+        READ ( Restart_inunit, * ) Soil_moist
+        READ ( Restart_inunit, * ) Slow_stor
+        READ ( Restart_inunit, * ) Ssres_stor
+        READ ( Restart_inunit, * ) Soil_rechr
+        READ ( Restart_inunit, * ) Imperv_stor
+        IF ( GSFLOW_flag==0 ) READ ( Restart_inunit, * ) Gwres_stor
         IF ( Dprst_flag==1 ) THEN
-          READ ( Restart_inunit ) Dprst_vol_open
-          READ ( Restart_inunit ) Dprst_vol_clos
+          READ ( Restart_inunit, * ) Dprst_vol_open
+          READ ( Restart_inunit, * ) Dprst_vol_clos
         ENDIF
         IF ( Stream_order_flag==1 ) THEN
-          READ ( Restart_inunit ) Seg_inflow
-          READ ( Restart_inunit ) Seg_outflow
+          READ ( Restart_inunit, * ) Seg_inflow
+          READ ( Restart_inunit, * ) Seg_outflow
         ENDIF
-        IF ( Nlake>0 ) READ ( Restart_inunit ) Lake_vol
+        IF ( Nlake>0 ) READ ( Restart_inunit, * ) Lake_vol
       ENDIF
       END SUBROUTINE climateflow_restart

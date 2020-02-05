@@ -361,7 +361,7 @@
       DO j = 1, Ntemp - 1
 
 ! check for missing or bad temps based on min and max daily values
-! observed for each month. 
+! observed for each month.
 
 ! the value of  -9999 = missing in HDB, and rdb
 
@@ -489,11 +489,11 @@
       CHARACTER(LEN=10) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Basin_lapse_max, Basin_lapse_min, Solrad_tmax_good, Solrad_tmin_good
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Basin_lapse_max, Basin_lapse_min, Solrad_tmax_good, Solrad_tmin_good
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Basin_lapse_max, Basin_lapse_min, Solrad_tmax_good, Solrad_tmin_good
+        READ ( Restart_inunit, * ) Basin_lapse_max, Basin_lapse_min, Solrad_tmax_good, Solrad_tmin_good
       ENDIF
       END SUBROUTINE temp_dist2_restart

@@ -17,7 +17,7 @@
       USE PRMS_TRANSP_TINDEX
       USE PRMS_MODULE, ONLY: Process, Nhru, Save_vars_to_file, Init_vars_from_file, Start_month, Start_day
       USE PRMS_BASIN, ONLY: Active_hrus, Hru_route_order
-      USE PRMS_CLIMATEVARS, ONLY: Tmaxf, Temp_units, Transp_on, Basin_transp_on 
+      USE PRMS_CLIMATEVARS, ONLY: Tmaxf, Temp_units, Transp_on, Basin_transp_on
       USE PRMS_SET_TIME, ONLY: Nowmonth, Nowday
       IMPLICIT NONE
 ! Functions
@@ -175,19 +175,19 @@
       CHARACTER(LEN=13) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Transp_check
-        WRITE ( Restart_outunit ) Tmax_sum
-        WRITE ( Restart_outunit ) Transp_beg
-        WRITE ( Restart_outunit ) Transp_end
-        WRITE ( Restart_outunit ) Transp_tmax
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Transp_check
+        WRITE ( Restart_outunit, * ) Tmax_sum
+        WRITE ( Restart_outunit, * ) Transp_beg
+        WRITE ( Restart_outunit, * ) Transp_end
+        WRITE ( Restart_outunit, * ) Transp_tmax
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Transp_check
-        READ ( Restart_inunit ) Tmax_sum
-        READ ( Restart_inunit ) Transp_beg_restart
-        READ ( Restart_inunit ) Transp_end_restart
-        READ ( Restart_inunit ) Transp_tmax_restart
+        READ ( Restart_inunit, * ) Transp_check
+        READ ( Restart_inunit, * ) Tmax_sum
+        READ ( Restart_inunit, * ) Transp_beg_restart
+        READ ( Restart_inunit, * ) Transp_end_restart
+        READ ( Restart_inunit, * ) Transp_tmax_restart
       ENDIF
       END SUBROUTINE transp_tindex_restart

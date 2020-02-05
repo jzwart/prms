@@ -632,13 +632,13 @@
       CHARACTER(LEN=6) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Basin_gwflow, Basin_gwsink, Basin_gwin, Basin_dnflow, Basin_gw_upslope, Basin_lake_seep
-        IF ( Weir_gate_flag==1 ) WRITE ( Restart_outunit ) Elevlake
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Basin_gwflow, Basin_gwsink, Basin_gwin, Basin_dnflow, Basin_gw_upslope, Basin_lake_seep
+        IF ( Weir_gate_flag==1 ) WRITE ( Restart_outunit, * ) Elevlake
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Basin_gwflow, Basin_gwsink, Basin_gwin, Basin_dnflow, Basin_gw_upslope, Basin_lake_seep
-        IF ( Weir_gate_flag==1 ) READ ( Restart_inunit ) Elevlake ! could be error if someone turns off weirs for restart
+        READ ( Restart_inunit, * ) Basin_gwflow, Basin_gwsink, Basin_gwin, Basin_dnflow, Basin_gw_upslope, Basin_lake_seep
+        IF ( Weir_gate_flag==1 ) READ ( Restart_inunit, * ) Elevlake ! could be error if someone turns off weirs for restart
       ENDIF
       END SUBROUTINE gwflow_restart

@@ -1431,19 +1431,19 @@
       CHARACTER(LEN=14) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Outflow_ts
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Outflow_ts
         IF ( Puls_lin_flag==1 ) THEN
-          WRITE ( Restart_outunit ) Din1
-          WRITE ( Restart_outunit ) Lake_sto
+          WRITE ( Restart_outunit, * ) Din1
+          WRITE ( Restart_outunit, * ) Lake_sto
         ENDIF
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Outflow_ts
+        READ ( Restart_inunit, * ) Outflow_ts
         IF ( Puls_lin_flag==1 ) THEN
-          READ ( Restart_inunit ) Din1
-          READ ( Restart_inunit ) Lake_sto
+          READ ( Restart_inunit, * ) Din1
+          READ ( Restart_inunit, * ) Lake_sto
         ENDIF
       ENDIF
       END SUBROUTINE muskingum_lake_restart

@@ -803,13 +803,13 @@
       CHARACTER(LEN=7) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Basin_segment_storage
-        WRITE ( Restart_outunit ) Segment_delta_flow
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Basin_segment_storage
+        WRITE ( Restart_outunit, * ) Segment_delta_flow
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Basin_segment_storage
-        READ ( Restart_inunit ) Segment_delta_flow
+        READ ( Restart_inunit, * ) Basin_segment_storage
+        READ ( Restart_inunit, * ) Segment_delta_flow
       ENDIF
       END SUBROUTINE routing_restart

@@ -566,21 +566,21 @@
       CHARACTER(LEN=5) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Basin_net_ppt, Basin_intcp_stor, Basin_intcp_evap, Basin_changeover, &
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Basin_net_ppt, Basin_intcp_stor, Basin_intcp_evap, Basin_changeover, &
      &                            Basin_net_snow, Basin_net_rain, Basin_net_apply, Basin_hru_apply
-        WRITE ( Restart_outunit ) Intcp_transp_on
-        WRITE ( Restart_outunit ) Intcp_on
-        WRITE ( Restart_outunit ) Intcp_stor
-        WRITE ( Restart_outunit ) Hru_intcpstor
+        WRITE ( Restart_outunit, * ) Intcp_transp_on
+        WRITE ( Restart_outunit, * ) Intcp_on
+        WRITE ( Restart_outunit, * ) Intcp_stor
+        WRITE ( Restart_outunit, * ) Hru_intcpstor
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Basin_net_ppt, Basin_intcp_stor, Basin_intcp_evap, Basin_changeover, &
+        READ ( Restart_inunit, * ) Basin_net_ppt, Basin_intcp_stor, Basin_intcp_evap, Basin_changeover, &
      &                          Basin_net_snow, Basin_net_rain, Basin_net_apply, Basin_hru_apply
-        READ ( Restart_inunit ) Intcp_transp_on
-        READ ( Restart_inunit ) Intcp_on
-        READ ( Restart_inunit ) Intcp_stor
-        READ ( Restart_inunit ) Hru_intcpstor
+        READ ( Restart_inunit, * ) Intcp_transp_on
+        READ ( Restart_inunit, * ) Intcp_on
+        READ ( Restart_inunit, * ) Intcp_stor
+        READ ( Restart_inunit, * ) Hru_intcpstor
       ENDIF
       END SUBROUTINE intcp_restart

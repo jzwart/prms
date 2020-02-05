@@ -1,7 +1,7 @@
 !***********************************************************************
 ! Distributes maximum, minimum, and average temperatures to each HRU
 ! using temperature data measured at one station and an estimated monthly
-! lapse rate (temp_1sta) or by computing a daily lapse rate based on 
+! lapse rate (temp_1sta) or by computing a daily lapse rate based on
 ! elevations with temperature data measured at two stations (temp_laps)
 !
 ! Variables needed from DATA FILE: tmax, tmin
@@ -219,7 +219,7 @@
           IF ( getparam(MODNAME, 'tmin_lapse', Nhru*12, 'real', Tmin_lapse)/=0 ) CALL read_error(2, 'tmin_lapse')
           IF ( getparam(MODNAME, 'tmax_lapse', Nhru*12, 'real', Tmax_lapse)/=0 ) CALL read_error(2, 'tmax_lapse')
         ELSEIF ( Temp_flag==2 ) THEN
-          IF ( getparam(MODNAME, 'hru_tlaps', Nhru, 'integer', Hru_tlaps)/=0 ) CALL read_error(2, 'hru_tlaps') 
+          IF ( getparam(MODNAME, 'hru_tlaps', Nhru, 'integer', Hru_tlaps)/=0 ) CALL read_error(2, 'hru_tlaps')
         ENDIF
         IF ( getparam(MODNAME, 'max_missing', 1, 'integer', Max_missing)/=0 ) CALL read_error(2, 'max_missing')
         Max_missing = Max_missing + 1
@@ -294,19 +294,19 @@
       CHARACTER(LEN=9) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Solrad_tmax_good, Solrad_tmin_good
-        WRITE ( Restart_outunit ) Tmax_cnt
-        WRITE ( Restart_outunit ) Tmin_cnt
-        WRITE ( Restart_outunit ) Tmax_prev
-        WRITE ( Restart_outunit ) Tmin_prev
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Solrad_tmax_good, Solrad_tmin_good
+        WRITE ( Restart_outunit, * ) Tmax_cnt
+        WRITE ( Restart_outunit, * ) Tmin_cnt
+        WRITE ( Restart_outunit, * ) Tmax_prev
+        WRITE ( Restart_outunit, * ) Tmin_prev
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Solrad_tmax_good, Solrad_tmin_good
-        READ ( Restart_inunit ) Tmax_cnt
-        READ ( Restart_inunit ) Tmin_cnt
-        READ ( Restart_inunit ) Tmax_prev
-        READ ( Restart_inunit ) Tmin_prev
+        READ ( Restart_inunit, * ) Solrad_tmax_good, Solrad_tmin_good
+        READ ( Restart_inunit, * ) Tmax_cnt
+        READ ( Restart_inunit, * ) Tmin_cnt
+        READ ( Restart_inunit, * ) Tmax_prev
+        READ ( Restart_inunit, * ) Tmin_prev
       ENDIF
       END SUBROUTINE temp_1sta_laps_restart

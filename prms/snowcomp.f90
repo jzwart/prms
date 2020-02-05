@@ -1,4 +1,4 @@
-﻿!***********************************************************************
+!***********************************************************************
 ! Initiates development of a snowpack and simulates snow accumulation
 ! and depletion processes using an energy-budget approach
 !***********************************************************************
@@ -796,7 +796,7 @@
 !          dpt1 = Pk_depth(i) + (Net_snow(i)*Deninv) + &
 !                 Settle_const * ((Pss(i)*Denmaxinv) - Pk_depth(i))
 !          dpt1 = ((Net_snow(i)*Deninv)+ (Setden*Pss(i))+Pk_depth(i))*Set1 ! [inches]
-          ! RAPCOMMENT - CHANGED TO THE APPROPRIATE FINITE DIFFERENCE 
+          ! RAPCOMMENT - CHANGED TO THE APPROPRIATE FINITE DIFFERENCE
           !             APPROXIMATION OF SNOW DEPTH
           Pk_depth(i) = dpt1 ! [inches]
 
@@ -2347,59 +2347,59 @@
       CHARACTER(LEN=8) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Deninv, Denmaxinv, Basin_snowmelt, Basin_pweqv, Basin_snowcov, &
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Deninv, Denmaxinv, Basin_snowmelt, Basin_pweqv, Basin_snowcov, &
      &          Basin_snowevap, Basin_snowdepth, Basin_pk_precip, Basin_tcal
-        WRITE ( Restart_outunit ) Int_alb
-        WRITE ( Restart_outunit ) Scrv
-        WRITE ( Restart_outunit ) Pksv
-        WRITE ( Restart_outunit ) Snowcov_areasv
-        WRITE ( Restart_outunit ) Salb
-        WRITE ( Restart_outunit ) Slst
-        WRITE ( Restart_outunit ) Lst
-        WRITE ( Restart_outunit ) Iasw
-        WRITE ( Restart_outunit ) Iso
-        WRITE ( Restart_outunit ) Mso
-        WRITE ( Restart_outunit ) Lso
-        WRITE ( Restart_outunit ) Albedo
-        WRITE ( Restart_outunit ) Pk_temp
-        WRITE ( Restart_outunit ) Pk_den
-        WRITE ( Restart_outunit ) Pk_def
-        WRITE ( Restart_outunit ) Pk_ice
-        WRITE ( Restart_outunit ) Freeh2o
-        WRITE ( Restart_outunit ) Snowcov_area
-        WRITE ( Restart_outunit ) Pss
-        WRITE ( Restart_outunit ) Pst
-        WRITE ( Restart_outunit ) Snsv
-        WRITE ( Restart_outunit ) Pk_depth
-        WRITE ( Restart_outunit ) Pkwater_ante
+        WRITE ( Restart_outunit, * ) Int_alb
+        WRITE ( Restart_outunit, * ) Scrv
+        WRITE ( Restart_outunit, * ) Pksv
+        WRITE ( Restart_outunit, * ) Snowcov_areasv
+        WRITE ( Restart_outunit, * ) Salb
+        WRITE ( Restart_outunit, * ) Slst
+        WRITE ( Restart_outunit, * ) Lst
+        WRITE ( Restart_outunit, * ) Iasw
+        WRITE ( Restart_outunit, * ) Iso
+        WRITE ( Restart_outunit, * ) Mso
+        WRITE ( Restart_outunit, * ) Lso
+        WRITE ( Restart_outunit, * ) Albedo
+        WRITE ( Restart_outunit, * ) Pk_temp
+        WRITE ( Restart_outunit, * ) Pk_den
+        WRITE ( Restart_outunit, * ) Pk_def
+        WRITE ( Restart_outunit, * ) Pk_ice
+        WRITE ( Restart_outunit, * ) Freeh2o
+        WRITE ( Restart_outunit, * ) Snowcov_area
+        WRITE ( Restart_outunit, * ) Pss
+        WRITE ( Restart_outunit, * ) Pst
+        WRITE ( Restart_outunit, * ) Snsv
+        WRITE ( Restart_outunit, * ) Pk_depth
+        WRITE ( Restart_outunit, * ) Pkwater_ante
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Deninv, Denmaxinv, Basin_snowmelt, Basin_pweqv, Basin_snowcov, &
+        READ ( Restart_inunit, * ) Deninv, Denmaxinv, Basin_snowmelt, Basin_pweqv, Basin_snowcov, &
      &         Basin_snowevap, Basin_snowdepth, Basin_pk_precip, Basin_tcal
-        READ ( Restart_inunit ) Int_alb
-        READ ( Restart_inunit ) Scrv
-        READ ( Restart_inunit ) Pksv
-        READ ( Restart_inunit ) Snowcov_areasv
-        READ ( Restart_inunit ) Salb
-        READ ( Restart_inunit ) Slst
-        READ ( Restart_inunit ) Lst
-        READ ( Restart_inunit ) Iasw
-        READ ( Restart_inunit ) Iso
-        READ ( Restart_inunit ) Mso
-        READ ( Restart_inunit ) Lso
-        READ ( Restart_inunit ) Albedo
-        READ ( Restart_inunit ) Pk_temp
-        READ ( Restart_inunit ) Pk_den
-        READ ( Restart_inunit ) Pk_def
-        READ ( Restart_inunit ) Pk_ice
-        READ ( Restart_inunit ) Freeh2o
-        READ ( Restart_inunit ) Snowcov_area
-        READ ( Restart_inunit ) Pss
-        READ ( Restart_inunit ) Pst
-        READ ( Restart_inunit ) Snsv
-        READ ( Restart_inunit ) Pk_depth
-        READ ( Restart_inunit ) Pkwater_ante
+        READ ( Restart_inunit, * ) Int_alb
+        READ ( Restart_inunit, * ) Scrv
+        READ ( Restart_inunit, * ) Pksv
+        READ ( Restart_inunit, * ) Snowcov_areasv
+        READ ( Restart_inunit, * ) Salb
+        READ ( Restart_inunit, * ) Slst
+        READ ( Restart_inunit, * ) Lst
+        READ ( Restart_inunit, * ) Iasw
+        READ ( Restart_inunit, * ) Iso
+        READ ( Restart_inunit, * ) Mso
+        READ ( Restart_inunit, * ) Lso
+        READ ( Restart_inunit, * ) Albedo
+        READ ( Restart_inunit, * ) Pk_temp
+        READ ( Restart_inunit, * ) Pk_den
+        READ ( Restart_inunit, * ) Pk_def
+        READ ( Restart_inunit, * ) Pk_ice
+        READ ( Restart_inunit, * ) Freeh2o
+        READ ( Restart_inunit, * ) Snowcov_area
+        READ ( Restart_inunit, * ) Pss
+        READ ( Restart_inunit, * ) Pst
+        READ ( Restart_inunit, * ) Snsv
+        READ ( Restart_inunit, * ) Pk_depth
+        READ ( Restart_inunit, * ) Pkwater_ante
       ENDIF
       END SUBROUTINE snowcomp_restart

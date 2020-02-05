@@ -381,11 +381,11 @@
       CHARACTER(LEN=9) :: module_name
 !***********************************************************************
       IF ( In_out==0 ) THEN
-        WRITE ( Restart_outunit ) MODNAME
-        WRITE ( Restart_outunit ) Outflow_ts
+        WRITE ( Restart_outunit, * ) MODNAME
+        WRITE ( Restart_outunit, * ) Outflow_ts
       ELSE
-        READ ( Restart_inunit ) module_name
+        READ ( Restart_inunit, * ) module_name
         CALL check_restart(MODNAME, module_name)
-        READ ( Restart_inunit ) Outflow_ts
+        READ ( Restart_inunit, * ) Outflow_ts
       ENDIF
       END SUBROUTINE muskingum_restart

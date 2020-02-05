@@ -5,8 +5,3 @@
 /prms/prms
 .Rproj.user
 *.Rproj
-=======
-*.o
-*.mod
-*.a
-prms/prms

@@ -738,7 +738,7 @@
       Iunit = get_ftnunit(7777)
       nchars = numchars(Fname)
       IF ( Ftype==0 ) THEN
-        OPEN ( Iunit, FILE=Fname(:nchars), STATUS='OLD', IOSTAT=ios )
+        OPEN ( Iunit, FILE=Fname(:nchars), STATUS='OLD', IOSTAT=ios, FORM='FORMATTED' )
       ELSE
         !USE UNFORMATTED for UNIX
         !OPEN ( Iunit, FILE=Fname(:nchars), STATUS='OLD', FORM='UNFORMATTED', IOSTAT=ios ) ! for linux
@@ -771,7 +771,7 @@
       nchars = numchars(Fname)
 
       IF ( Ftype==0 ) THEN
-        OPEN ( Iunit, FILE=Fname(:nchars), STATUS='REPLACE', IOSTAT=ios )
+        OPEN ( Iunit, FILE=Fname(:nchars), STATUS='REPLACE', IOSTAT=ios, FORM='FORMATTED' )
       ELSE
         !USE UNFORMATTED for UNIX
         !OPEN ( Iunit, FILE=Fname(:nchars), STATUS='REPLACE', IOSTAT=ios, FORM='UNFORMATTED' ) ! for linux
